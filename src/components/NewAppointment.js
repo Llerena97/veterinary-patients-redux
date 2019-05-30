@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 class NewAppointment extends Component {
   state = {
@@ -28,8 +29,11 @@ class NewAppointment extends Component {
       this.setState({
         error: true
       })
+      return;
     }
-    return;
+    const newAppointment = {...this.state.appointment}
+    newAppointment.id = uuid();
+    this.props.createNewAppointment(newAppointment)
   }
 
   render() {
