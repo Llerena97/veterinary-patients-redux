@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
 
 class NewAppointment extends Component {
+  state = {
+    appointment: {
+      pet: '',
+      owner: '',
+      date: '',
+      time: '',
+      symptoms: ''
+    }
+  }
+
+  handleChange = e => {
+    this.setState({
+      appointment: {
+        ...this.state.appointment,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
   render() {
     return (
       <div className="card mt-5 py-5">
@@ -17,6 +36,8 @@ class NewAppointment extends Component {
                   className="form-control"
                   placeholder="Pet Name"
                   name="pet"
+                  onChange={this.handleChange}
+                  value={this.state.appointment.pet}
                 />
               </div>
             </div>
@@ -29,6 +50,8 @@ class NewAppointment extends Component {
                   className="form-control"
                   placeholder="Pet Owner"
                   name="owner"
+                  onChange={this.handleChange}
+                  value={this.state.appointment.owner}
                 />
               </div>
             </div>
@@ -40,6 +63,8 @@ class NewAppointment extends Component {
                   type="date"
                   className="form-control"
                   name="date"
+                  onChange={this.handleChange}
+                  value={this.state.appointment.date}
                 />
               </div>
               <label className="col-sm-4 col-lg-2 col-form-label">Time</label>
@@ -48,6 +73,8 @@ class NewAppointment extends Component {
                   type="time"
                   className="form-control"
                   name="time"
+                  onChange={this.handleChange}
+                  value={this.state.appointment.time}
                 />
               </div>
             </div>
@@ -59,6 +86,8 @@ class NewAppointment extends Component {
                   className="form-control"
                   name="symptoms"
                   placeholder="Describe symptoms..."
+                  onChange={this.handleChange}
+                  value={this.state.appointment.symptoms}
                 >
                 </textarea>
               </div>
