@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Appointment = ({appointment, deleteAppointment}) => (
   <div className="media mt-3">
@@ -12,5 +13,10 @@ const Appointment = ({appointment, deleteAppointment}) => (
     <button className="btn btn-danger" onClick={() => deleteAppointment(appointment.id)}>Delete &times;</button>
   </div>
 )
+
+Appointment.propTypes = {
+  appointment: PropTypes.object.isRequired,
+  deleteAppointment: PropTypes.func.isRequired
+}
 
 export default Appointment;
