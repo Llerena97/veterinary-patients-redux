@@ -16,6 +16,14 @@ class App extends Component {
     })
   }
 
+  deleteAppointment = appointmentId => {
+    const currentAppointments = this.state.appointments
+    const appointments = currentAppointments.filter( appointment => appointment.id !== appointmentId)
+    this.setState({
+      appointments
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,6 +39,7 @@ class App extends Component {
           <div className="mt-5 col-md-10 mx-auto">
             <AppointmentList
               appointments={this.state.appointments}
+              deleteAppointment={this.deleteAppointment}
               />
           </div>
         </div>
