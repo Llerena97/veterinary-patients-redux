@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 
+const initialState = {
+  appointment: {
+    pet: '',
+    owner: '',
+    date: '',
+    time: '',
+    symptoms: ''
+  },
+  error: false
+}
 class NewAppointment extends Component {
-  state = {
-    appointment: {
-      pet: '',
-      owner: '',
-      date: '',
-      time: '',
-      symptoms: ''
-    },
-    error: false
-  }
+  state = {...initialState}
 
   handleChange = e => {
     this.setState({
@@ -34,6 +35,10 @@ class NewAppointment extends Component {
     const newAppointment = {...this.state.appointment}
     newAppointment.id = uuid();
     this.props.createNewAppointment(newAppointment)
+
+    this.setState({
+      ...initialState
+    })
   }
 
   render() {
