@@ -37,12 +37,14 @@ class NewAppointment extends Component {
   }
 
   render() {
+    const { error } = this.state
     return (
       <div className="card mt-5 py-5">
         <div className="card-body">
           <h2 className="card-title text-center mb-5">
             Fill out this form for a new appointment.
           </h2>
+          { error ? <div className="alert alert-danger mt-2 mb-5 text-center">All fields are required</div> : null }
           <form
             onSubmit={this.handleSubmit}
           >
