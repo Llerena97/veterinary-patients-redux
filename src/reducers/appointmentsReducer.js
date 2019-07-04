@@ -25,6 +25,11 @@ export default function(state = initialState, action) {
       return {
         ...state
       }
+    case ADD_APPOINTMENT:
+      return {
+        ...state,
+        appointments: [...state.appointments, action.payload]
+      }
     default:
     return state;
   }

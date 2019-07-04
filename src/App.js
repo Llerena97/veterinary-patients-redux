@@ -23,13 +23,6 @@ class App extends Component {
     localStorage.setItem('appointments', JSON.stringify(this.state.appointments))
   }
 
-  createNewAppointment = appointmentData => {
-    const appointments = [...this.state.appointments, appointmentData]
-    this.setState({
-      appointments
-    })
-  }
-
   deleteAppointment = appointmentId => {
     const currentAppointments = this.state.appointments
     const appointments = currentAppointments.filter( appointment => appointment.id !== appointmentId)
@@ -47,9 +40,7 @@ class App extends Component {
             />
           <div className="row">
             <div className="col-md-10 mx-auto">
-              <NewAppointment
-                createNewAppointment={this.createNewAppointment}
-                />
+              <NewAppointment/>
             </div>
             <div className="mt-5 col-md-10 mx-auto">
               <AppointmentList

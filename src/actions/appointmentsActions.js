@@ -5,3 +5,10 @@ export const getAppointments = () => {
     type: SHOW_APPOINTMENTS
   }
 }
+
+export const addAppointment = (appointment) => {
+  return {
+    type: ADD_APPOINTMENT,
+    payload: appointment
+  }
+}
