@@ -6,8 +6,13 @@ import Appointment from './Appointment';
 import { connect } from 'react-redux';
 import { getAppointments } from '../actions/appointmentsActions';
 
+import store from '../store';
+store.subscribe(() => {
+  localStorage.setItem('appointments', JSON.stringify(store.getState()))
+})
+
 const AppointmentList = ({appointments, deleteAppointment}) => {
-  
+
   const message = Object.keys(appointments).length === 0 ? "There aren't appointments" : "Admin Appointments"
   return(
     <div className="card mt-2 py-5">
@@ -28,8 +33,7 @@ const AppointmentList = ({appointments, deleteAppointment}) => {
 };
 
 AppointmentList.propTypes = {
-  appointments: PropTypes.array.isRequired,
-  deleteAppointment: PropTypes.func.isRequired
+  appointments: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({

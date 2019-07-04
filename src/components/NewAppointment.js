@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import uuid from 'uuid';
 
 // Redux
@@ -134,10 +133,6 @@ class NewAppointment extends Component {
       </div>
     );
   }
-}
-
-NewAppointment.propTypes = {
-  createNewAppointment: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

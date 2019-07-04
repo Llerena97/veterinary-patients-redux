@@ -10,19 +10,6 @@ import store from './store'
 
 class App extends Component {
 
-  componentDidMount(){
-    const localStorageAppointments = localStorage.getItem('appointments');
-    if (localStorageAppointments) {
-      this.setState({
-        appointments: JSON.parse(localStorageAppointments)
-      })
-    }
-  }
-
-  componentDidUpdate(){
-    localStorage.setItem('appointments', JSON.stringify(this.state.appointments))
-  }
-
   render() {
     return (
       <Provider store={store}>
@@ -35,9 +22,7 @@ class App extends Component {
               <NewAppointment/>
             </div>
             <div className="mt-5 col-md-10 mx-auto">
-              <AppointmentList
-                deleteAppointment={this.deleteAppointment}
-                />
+              <AppointmentList/>
             </div>
           </div>
         </div>
