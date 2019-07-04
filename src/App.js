@@ -23,14 +23,6 @@ class App extends Component {
     localStorage.setItem('appointments', JSON.stringify(this.state.appointments))
   }
 
-  deleteAppointment = appointmentId => {
-    const currentAppointments = this.state.appointments
-    const appointments = currentAppointments.filter( appointment => appointment.id !== appointmentId)
-    this.setState({
-      appointments
-    })
-  }
-
   render() {
     return (
       <Provider store={store}>

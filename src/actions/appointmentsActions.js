@@ -12,3 +12,10 @@ export const addAppointment = (appointment) => {
     payload: appointment
   }
 }
+
+export const deleteAppointment = (id) => {
+  return {
+    type: DELETE_APPOINTMENT,
+    payload: id
+  }
+}
