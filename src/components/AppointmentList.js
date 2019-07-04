@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Appointment from './Appointment'
+import Appointment from './Appointment';
+
+// Redux
+import { connect } from 'react-redux';
+import { getAppointments } from '../actions/appointmentsActions';
 
 const AppointmentList = ({appointments, deleteAppointment}) => {
+  
   const message = Object.keys(appointments).length === 0 ? "There aren't appointments" : "Admin Appointments"
   return(
     <div className="card mt-2 py-5">
@@ -27,4 +32,8 @@ AppointmentList.propTypes = {
   deleteAppointment: PropTypes.func.isRequired
 }
 
-export default AppointmentList;
+const mapStateToProps = state => ({
+  appointments: state.appointments.appointments
+})
+
+export default connect(mapStateToProps, {getAppointments}) (AppointmentList);
