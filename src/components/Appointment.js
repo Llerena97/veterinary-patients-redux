@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Redux
+import { connect } from 'react-redux';
+import { deleteAppointment } from '../actions/appointmentsActions';
+
+
 const Appointment = ({appointment, deleteAppointment}) => (
   <div className="media mt-3">
     <div className="media-body">
@@ -19,4 +24,4 @@ Appointment.propTypes = {
   deleteAppointment: PropTypes.func.isRequired
 }
 
-export default Appointment;
+export default connect(null, {deleteAppointment}) (Appointment);

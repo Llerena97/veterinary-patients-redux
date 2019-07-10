@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import uuid from 'uuid';
+
+// Redux
+import { connect } from 'react-redux';
+import { addAppointment } from '../actions/appointmentsActions';
 
 const initialState = {
   appointment: {
@@ -35,7 +38,7 @@ class NewAppointment extends Component {
     }
     const newAppointment = {...this.state.appointment}
     newAppointment.id = uuid();
-    this.props.createNewAppointment(newAppointment)
+    this.props.addAppointment(newAppointment)
 
     this.setState({
       ...initialState
@@ -132,8 +135,8 @@ class NewAppointment extends Component {
   }
 }
 
-NewAppointment.propTypes = {
-  createNewAppointment: PropTypes.func.isRequired
-}
+const mapStateToProps = state => ({
+  appointments: state.appointments.appointments
+})
 
-export default NewAppointment;
+export default connect(mapStateToProps, {addAppointment}) (NewAppointment);
